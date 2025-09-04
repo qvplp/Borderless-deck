@@ -124,30 +124,32 @@ class VerticalScrollNavigation {
     }
 
     setupScrollDetection() {
-        // Enable native scroll
-        document.body.style.overflow = 'auto';
-        this.scrollContainer.style.overflow = 'visible';
+        // Disable global scroll
+        document.body.style.overflow = 'hidden';
+        this.scrollContainer.style.overflow = 'hidden';
         
-        // Add scroll event listener for section visibility
-        window.addEventListener('scroll', () => {
-            this.updateActiveSection();
+        // Setup individual section scrolling
+        this.setupSectionScrolling();
+    }
+    
+    setupSectionScrolling() {
+        // Each section handles its own scrolling
+        this.sections.forEach((section, index) => {
+            section.addEventListener('scroll', () => {
+                this.updateActiveSection();
+            });
         });
     }
 
     updateActiveSection() {
-        const scrollPosition = window.scrollY;
-        const windowHeight = window.innerHeight;
-        
+        // Only show the current active section
         this.sections.forEach((section, index) => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionCenter = sectionTop + sectionHeight / 2;
-            
-            // Check if section is in viewport
-            if (scrollPosition + windowHeight / 2 >= sectionTop && 
-                scrollPosition + windowHeight / 2 <= sectionTop + sectionHeight) {
-                this.currentStep = index + 1;
-                this.updateNavigation();
+            if (index + 1 === this.currentStep) {
+                section.classList.add('active');
+                section.style.display = 'flex';
+            } else {
+                section.classList.remove('active');
+                section.style.display = 'none';
             }
         });
     }
@@ -168,22 +170,34 @@ class VerticalScrollNavigation {
         }
 
         this.isTransitioning = true;
-        const targetSection = this.sections[stepNumber - 1];
         
+        // Hide all sections first
+        this.sections.forEach(section => {
+            section.classList.remove('active');
+            section.style.display = 'none';
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(100px)';
+        });
+        
+        // Show target section
+        const targetSection = this.sections[stepNumber - 1];
         if (targetSection) {
-            // Smooth scroll to section
-            targetSection.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+            targetSection.style.display = 'flex';
             
-            // Update current step
-            this.updateCurrentStep(stepNumber);
-            
+            // Animate in
             setTimeout(() => {
-                this.isTransitioning = false;
-            }, 800);
+                targetSection.classList.add('active');
+                targetSection.style.opacity = '1';
+                targetSection.style.transform = 'translateY(0)';
+            }, 50);
         }
+        
+        // Update current step
+        this.updateCurrentStep(stepNumber);
+        
+        setTimeout(() => {
+            this.isTransitioning = false;
+        }, 800);
     }
 
     nextStep() {
