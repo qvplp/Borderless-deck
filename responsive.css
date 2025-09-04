@@ -1,0 +1,472 @@
+/* Enhanced Responsive Design for Ethereum Foundation Clone */
+
+/* Extra Large Screens (1400px and up) */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    .hero-title {
+        font-size: 4.5rem;
+    }
+    
+    .section-title {
+        font-size: 3.5rem;
+    }
+    
+    .garden-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Large Screens (1200px to 1399px) */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .hero-container {
+        gap: 3rem;
+    }
+    
+    .content-grid {
+        gap: 3rem;
+    }
+}
+
+/* Medium Screens (992px to 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .garden-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .ef-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Small Screens (768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .nav-container {
+        padding: 0 1.5rem;
+    }
+    
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+        padding-top: 2rem;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.125rem;
+        max-width: 100%;
+    }
+    
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .garden-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .ef-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+/* Mobile Screens (576px to 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .nav-container {
+        padding: 0 1rem;
+        height: 60px;
+    }
+    
+    .nav-logo .logo {
+        height: 28px;
+    }
+    
+    .hero {
+        min-height: 90vh;
+    }
+    
+    .hero-container {
+        padding-top: 4rem;
+        min-height: 90vh;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+        line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .cta-button {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.875rem;
+    }
+    
+    .section {
+        padding: 3rem 0;
+    }
+    
+    .section-title {
+        font-size: 2.25rem;
+    }
+    
+    .section-description {
+        font-size: 1rem;
+    }
+    
+    .garden-card {
+        padding: 1.5rem;
+    }
+    
+    .garden-card h3 {
+        font-size: 1.125rem;
+    }
+    
+    .feature-item {
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .feature-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+    }
+    
+    .stat-item {
+        padding: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 1.5rem;
+    }
+}
+
+/* Extra Small Screens (up to 575px) */
+@media (max-width: 575px) {
+    .container {
+        padding: 0 0.75rem;
+    }
+    
+    .nav-container {
+        padding: 0 0.75rem;
+        height: 60px;
+    }
+    
+    .nav-logo .logo {
+        height: 24px;
+    }
+    
+    .hero {
+        min-height: 85vh;
+    }
+    
+    .hero-container {
+        padding-top: 3rem;
+        min-height: 85vh;
+        gap: 1.5rem;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+        line-height: 1.1;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+    }
+    
+    .cta-button {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.875rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .scroll-hint {
+        font-size: 0.75rem;
+    }
+    
+    .section {
+        padding: 2rem 0;
+    }
+    
+    .section-title {
+        font-size: 1.875rem;
+        margin-bottom: 1rem;
+    }
+    
+    .section-description {
+        font-size: 0.875rem;
+    }
+    
+    .garden-card {
+        padding: 1.25rem;
+    }
+    
+    .garden-card h3 {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .garden-card p {
+        font-size: 0.875rem;
+    }
+    
+    .card-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 1rem;
+    }
+    
+    .card-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .feature-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .feature-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1.125rem;
+        margin: 0 auto;
+    }
+    
+    .feature-content h4 {
+        font-size: 1rem;
+    }
+    
+    .feature-content p {
+        font-size: 0.875rem;
+    }
+    
+    .stat-item {
+        padding: 1.25rem;
+    }
+    
+    .stat-number {
+        font-size: 1.75rem;
+    }
+    
+    .stat-label {
+        font-size: 0.75rem;
+    }
+    
+    .footer {
+        padding: 2rem 0 1rem;
+    }
+    
+    .footer-section h4 {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .footer-section p,
+    .footer-section ul li a {
+        font-size: 0.875rem;
+    }
+    
+    .footer-bottom p {
+        font-size: 0.75rem;
+    }
+}
+
+/* Landscape Mobile Orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        min-height: 100vh;
+    }
+    
+    .hero-container {
+        min-height: 100vh;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.875rem;
+    }
+    
+    .section {
+        padding: 2rem 0;
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .nav-logo .logo,
+    .card-icon svg,
+    .cta-icon {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .garden-node,
+    .block,
+    .scroll-dot {
+        animation: none !important;
+    }
+    
+    .fade-in {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-bg: #0a0a0a;
+        --secondary-bg: #111111;
+        --accent-bg: #1a1a1a;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .navbar,
+    .scroll-indicator,
+    .cta-button,
+    .hero-cta {
+        display: none !important;
+    }
+    
+    .hero {
+        min-height: auto;
+        page-break-inside: avoid;
+    }
+    
+    .section {
+        page-break-inside: avoid;
+        padding: 1rem 0;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .section-title,
+    .hero-title {
+        color: black !important;
+    }
+}
+
+/* Accessibility Improvements */
+@media (prefers-contrast: high) {
+    :root {
+        --text-secondary: #ffffff;
+        --text-muted: #cccccc;
+        --accent-color: #0000ff;
+    }
+    
+    .nav-link,
+    .garden-card,
+    .stat-item {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Focus Styles for Keyboard Navigation */
+.nav-link:focus,
+.cta-button:focus,
+.garden-card:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Skip Link for Accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--accent-color);
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 1000;
+    border-radius: 4px;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* Loading States */
+.loading {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.loaded {
+    opacity: 1;
+}
+
+/* Error States */
+.error {
+    color: #ff6b6b;
+    border-color: #ff6b6b;
+}
+
+/* Success States */
+.success {
+    color: #51cf66;
+    border-color: #51cf66;
+}
