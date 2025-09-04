@@ -20,11 +20,7 @@ class VerticalScrollNavigation {
         this.scrollContainer = document.querySelector('.vertical-scroll-container');
         this.sections = document.querySelectorAll('.scroll-section');
         this.navLinks = document.querySelectorAll('.nav-link');
-        this.progressDots = document.querySelectorAll('.progress-dot');
         this.nextPageButtons = document.querySelectorAll('.next-page-button');
-        this.progressFill = document.getElementById('progressFill');
-        this.currentStepElement = document.getElementById('currentStep');
-        this.totalStepsElement = document.getElementById('totalSteps');
     }
 
     setupEventListeners() {
@@ -39,16 +35,6 @@ class VerticalScrollNavigation {
             });
         });
 
-        // Progress dots
-        this.progressDots.forEach(dot => {
-            dot.addEventListener('click', (e) => {
-                e.preventDefault();
-                const step = parseInt(dot.dataset.step);
-                if (step && !this.isTransitioning) {
-                    this.goToStep(step);
-                }
-            });
-        });
 
         // Next page buttons
         this.nextPageButtons.forEach(button => {
@@ -205,16 +191,7 @@ class VerticalScrollNavigation {
     updateCurrentStep(stepNumber) {
         this.currentStep = stepNumber;
         
-        // Update progress bar
-        if (this.progressFill) {
-            const progressPercentage = (stepNumber / this.totalSteps) * 100;
-            this.progressFill.style.width = `${progressPercentage}%`;
-        }
 
-        // Update step counter
-        if (this.currentStepElement) {
-            this.currentStepElement.textContent = stepNumber;
-        }
 
         // Update navigation
         this.updateNavigation();
@@ -231,15 +208,6 @@ class VerticalScrollNavigation {
             }
         });
 
-        // Update progress dots
-        this.progressDots.forEach((dot, index) => {
-            const stepNumber = index + 1;
-            if (stepNumber === this.currentStep) {
-                dot.classList.add('active');
-            } else {
-                dot.classList.remove('active');
-            }
-        });
 
         // Update sections
         this.sections.forEach((section, index) => {

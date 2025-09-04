@@ -422,37 +422,6 @@
     line-height: 1.2;
 }
 
-/* Progress Indicator */
-.vertical-progress {
-    position: fixed;
-    right: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
-
-.progress-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(98, 98, 255, 0.3);
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.progress-dot.active {
-    background: #6262ff;
-    transform: scale(1.2);
-}
-
-.progress-dot:hover {
-    background: #4a4aff;
-    transform: scale(1.1);
-}
 
 /* Animations */
 @keyframes textFlowIn {
@@ -573,9 +542,6 @@
         height: 300px;
     }
     
-    .vertical-progress {
-        right: 1rem;
-    }
 }
 
 @media (max-width: 480px) {
