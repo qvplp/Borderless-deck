@@ -37,20 +37,24 @@
 
 /* Section Content */
 .section-content {
-    max-width: 1200px;
+    max-width: 1000px;
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    text-align: center;
     margin-bottom: 2rem;
+    gap: 2rem;
 }
 
 /* Text Flow */
 .text-flow {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 2rem;
+    text-align: center;
 }
 
 .main-title {
@@ -62,7 +66,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-align: left;
+    text-align: center;
 }
 
 .main-subtitle {
@@ -71,24 +75,27 @@
     color: var(--text-secondary);
     margin-bottom: 2rem;
     font-style: italic;
-    text-align: left;
+    text-align: center;
 }
 
 .text-block {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1.5rem;
+    text-align: center;
 }
 
 .flowing-text {
     font-size: 1.25rem;
     color: var(--text-secondary);
     line-height: 1.8;
-    text-align: left;
+    text-align: center;
     margin: 0;
     opacity: 0;
     transform: translateY(30px);
     animation: textFlowIn 0.8s ease forwards;
+    max-width: 800px;
 }
 
 .flowing-text:nth-child(1) { animation-delay: 0.2s; }
@@ -106,7 +113,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    width: 100%;
+    margin-top: 2rem;
     position: relative;
 }
 
@@ -351,12 +359,13 @@
 /* Navigation Buttons */
 .navigation-button {
     position: absolute;
-    bottom: 2rem;
+    bottom: 3rem;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .next-page-button {
@@ -518,9 +527,10 @@
 /* Responsive Design */
 @media (max-width: 768px) {
     .section-content {
-        grid-template-columns: 1fr;
+        padding: 0 1.5rem;
         gap: 2rem;
         text-align: center;
+        max-width: 100%;
     }
     
     .main-title {
@@ -536,6 +546,11 @@
     .flowing-text {
         font-size: 1rem;
         text-align: center;
+        max-width: 100%;
+    }
+    
+    .visual-element {
+        margin-top: 1.5rem;
     }
     
     .feature-grid {
@@ -564,6 +579,10 @@
 }
 
 @media (max-width: 480px) {
+    .section-content {
+        padding: 0 1rem;
+    }
+    
     .main-title {
         font-size: 2rem;
     }
@@ -574,6 +593,16 @@
     
     .flowing-text {
         font-size: 0.875rem;
+        max-width: 100%;
+    }
+    
+    .navigation-button {
+        bottom: 2rem;
+    }
+    
+    .next-page-button {
+        min-width: 160px;
+        padding: 1rem 1.5rem;
     }
     
     .feature-card {
