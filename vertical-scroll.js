@@ -21,6 +21,7 @@ class VerticalScrollNavigation {
         this.sections = document.querySelectorAll('.scroll-section');
         this.navLinks = document.querySelectorAll('.nav-link');
         this.progressDots = document.querySelectorAll('.progress-dot');
+        this.nextPageButtons = document.querySelectorAll('.next-page-button');
         this.progressFill = document.getElementById('progressFill');
         this.currentStepElement = document.getElementById('currentStep');
         this.totalStepsElement = document.getElementById('totalSteps');
@@ -49,36 +50,43 @@ class VerticalScrollNavigation {
             });
         });
 
-        // Keyboard navigation with debouncing
+        // Next page buttons
+        this.nextPageButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const nextStep = parseInt(button.dataset.next);
+                if (nextStep && !this.isTransitioning) {
+                    this.goToStep(nextStep);
+                }
+            });
+        });
+
+        // Keyboard navigation (optional - for accessibility)
         document.addEventListener('keydown', (e) => {
             if (this.isTransitioning) {
                 e.preventDefault();
                 return;
             }
 
-            // Debounce keyboard events
-            clearTimeout(this.keyTimeout);
-            this.keyTimeout = setTimeout(() => {
-                switch(e.key) {
-                    case 'ArrowDown':
-                    case ' ':
-                        e.preventDefault();
-                        this.nextStep();
-                        break;
-                    case 'ArrowUp':
-                        e.preventDefault();
-                        this.previousStep();
-                        break;
-                    case 'Home':
-                        e.preventDefault();
-                        this.goToStep(1);
-                        break;
-                    case 'End':
-                        e.preventDefault();
-                        this.goToStep(this.totalSteps);
-                        break;
-                }
-            }, 100);
+            switch(e.key) {
+                case 'ArrowRight':
+                case ' ':
+                    e.preventDefault();
+                    this.nextStep();
+                    break;
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    this.previousStep();
+                    break;
+                case 'Home':
+                    e.preventDefault();
+                    this.goToStep(1);
+                    break;
+                case 'End':
+                    e.preventDefault();
+                    this.goToStep(this.totalSteps);
+                    break;
+            }
         });
 
         // Touch/swipe support
@@ -130,24 +138,9 @@ class VerticalScrollNavigation {
     }
 
     setupScrollDetection() {
-        // Mouse wheel navigation with debouncing
+        // Disable all scroll navigation
         this.scrollContainer.addEventListener('wheel', (e) => {
-            if (this.isTransitioning) {
-                e.preventDefault();
-                return;
-            }
-            
             e.preventDefault();
-            
-            // Debounce wheel events
-            clearTimeout(this.wheelTimeout);
-            this.wheelTimeout = setTimeout(() => {
-                if (e.deltaY > 0) {
-                    this.nextStep();
-                } else if (e.deltaY < 0) {
-                    this.previousStep();
-                }
-            }, 50);
         });
 
         // Disable native scroll
