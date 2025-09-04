@@ -74,6 +74,14 @@ class VerticalScrollNavigation {
                     break;
             }
         });
+        
+        // Listen for hamburger menu navigation
+        document.addEventListener('navigateToStep', (e) => {
+            const step = e.detail.step;
+            if (step && !this.isTransitioning) {
+                this.goToStep(step);
+            }
+        });
 
         // Touch/swipe support
         this.setupTouchEvents();
@@ -215,10 +223,14 @@ class VerticalScrollNavigation {
     updateCurrentStep(stepNumber) {
         this.currentStep = stepNumber;
         
-
-
         // Update navigation
         this.updateNavigation();
+        
+        // Dispatch step changed event for hamburger menu
+        const event = new CustomEvent('stepChanged', {
+            detail: { step: stepNumber }
+        });
+        document.dispatchEvent(event);
     }
 
     updateNavigation() {

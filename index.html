@@ -14,27 +14,48 @@
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDQwQzMxLjA0NTcgNDAgNDAgMzEuMDQ1NyA0MCAyMEM0MCA4Ljk1NDMgMzEuMDQ1NyAwIDIwIDBDOC45NTQzIDAgMCA4Ljk1NDMgMCAyMEMwIDMxLjA0NTcgOC45NTQzIDQwIDIwIDQwWiIgZmlsbD0iIzYyNjJGRiIvPgo8cGF0aCBkPSJNMjAgMzJDMjYuNjI3NCAzMiAzMiAyNi42Mjc0IDMyIDIwQzMyIDEzLjM3MjYgMjYuNjI3NCA4IDIwIDhDMTMuMzcyNiA4IDggMTMuMzcyNiA4IDIwQzggMjYuNjI3NCAxMy4zNzI2IDMyIDIwIDMyWiIgZmlsbD0iI0ZGRkZGRiIvPgo8L3N2Zz4K" alt="Ethereum Foundation" class="logo">
-            </div>
-            <div class="nav-menu">
-                <a href="#" class="nav-link" data-step="1">Borderless World</a>
-                <a href="#" class="nav-link" data-step="2">Infinite Garden</a>
-                <a href="#" class="nav-link" data-step="3">What is Ethereum?</a>
-                <a href="#" class="nav-link" data-step="4">What is the EF?</a>
-                <a href="#" class="nav-link" data-step="5">Our Story</a>
-                <a href="#" class="nav-link" data-step="6">Philosophy</a>
-            </div>
-            <div class="nav-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+    <!-- Hamburger Menu -->
+    <div class="hamburger-menu">
+        <button class="hamburger-toggle" id="hamburgerToggle">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+        <div class="hamburger-overlay" id="hamburgerOverlay">
+            <div class="hamburger-content">
+                <div class="hamburger-header">
+                    <h3>Borderless</h3>
+                    <button class="hamburger-close" id="hamburgerClose">&times;</button>
+                </div>
+                <nav class="hamburger-nav">
+                    <a href="#" class="hamburger-link" data-step="1">
+                        <span class="menu-icon">🌍</span>
+                        <span class="menu-text">Road to the World Citizen</span>
+                    </a>
+                    <a href="#" class="hamburger-link" data-step="2">
+                        <span class="menu-icon">⚡</span>
+                        <span class="menu-text">Technical Vision</span>
+                    </a>
+                    <a href="#" class="hamburger-link" data-step="3">
+                        <span class="menu-icon">💰</span>
+                        <span class="menu-text">Economic Impact</span>
+                    </a>
+                    <a href="#" class="hamburger-link" data-step="4">
+                        <span class="menu-icon">🤝</span>
+                        <span class="menu-text">Social Impact</span>
+                    </a>
+                    <a href="#" class="hamburger-link" data-step="5">
+                        <span class="menu-icon">🚀</span>
+                        <span class="menu-text">Future Vision</span>
+                    </a>
+                    <a href="#" class="hamburger-link" data-step="6">
+                        <span class="menu-icon">✨</span>
+                        <span class="menu-text">Conclusion</span>
+                    </a>
+                </nav>
             </div>
         </div>
-    </nav>
+    </div>
 
     <!-- Vertical Scroll Container -->
     <div class="vertical-scroll-container">
@@ -382,6 +403,7 @@
     </footer>
 
     <script src="vertical-scroll.js"></script>
+    <script src="hamburger-menu.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
