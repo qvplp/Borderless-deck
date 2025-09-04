@@ -1,0 +1,1315 @@
+/* リセットとベーススタイル */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ヘッダー */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 72px;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.eth-diamond {
+    width: 32px;
+    height: 32px;
+    position: relative;
+}
+
+.diamond-shape {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #627eea 0%, #764ba2 100%);
+    transform: rotate(45deg);
+    border-radius: 4px;
+    position: relative;
+}
+
+.diamond-shape::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 2px;
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #1a1a1a;
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-menu a:hover {
+    color: #627eea;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #627eea;
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.search-btn, .theme-toggle {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.search-btn:hover, .theme-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.language-selector {
+    background: #f5f5f5;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.language-selector:hover {
+    background: #e5e5e5;
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.nav-toggle span {
+    width: 24px;
+    height: 2px;
+    background: #1a1a1a;
+    transition: 0.3s;
+}
+
+/* メインビジュアル */
+.hero {
+    padding: 120px 0 80px;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.hero-content {
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    line-height: 1.1;
+    color: #1a1a1a;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 48px;
+    color: #4a5568;
+    line-height: 1.6;
+}
+
+.hero-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.action-card {
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.action-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+    border-color: #627eea;
+}
+
+.action-icon {
+    font-size: 24px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #627eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    color: white;
+}
+
+.action-content h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #1a1a1a;
+}
+
+.action-content p {
+    font-size: 0.875rem;
+    color: #6b7280;
+    line-height: 1.4;
+}
+
+/* ヒーローイラストレーション */
+.hero-illustration {
+    position: relative;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ethereum-community {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.community-space {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* ヤシの木 */
+.palm-trees {
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+    z-index: 3;
+}
+
+.palm-tree {
+    width: 40px;
+    height: 120px;
+    background: linear-gradient(to top, #2d5016, #4a7c59);
+    border-radius: 20px 20px 0 0;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.palm-tree::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 40px;
+    background: linear-gradient(45deg, #2d5016, #4a7c59);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+
+/* 建物 */
+.buildings {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    z-index: 2;
+}
+
+.building {
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(to top, #2d3748, #4a5568);
+    border-radius: 8px 8px 0 0;
+}
+
+.building-1 {
+    left: 10%;
+    width: 60px;
+    height: 150px;
+    background: linear-gradient(to top, #2b6cb0, #3182ce);
+}
+
+.building-2 {
+    left: 30%;
+    width: 80px;
+    height: 180px;
+    background: linear-gradient(to top, #38a169, #48bb78);
+}
+
+.building-3 {
+    left: 50%;
+    width: 70px;
+    height: 120px;
+    background: linear-gradient(to top, #d69e2e, #ecc94b);
+}
+
+/* 人々 */
+.people {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    z-index: 4;
+}
+
+.person {
+    position: absolute;
+    width: 20px;
+    height: 40px;
+    background: #ffffff;
+    border-radius: 10px 10px 0 0;
+    bottom: 0;
+}
+
+.person::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: #fbb6ce;
+    border-radius: 50%;
+}
+
+.person-1 {
+    left: 15%;
+    bottom: 20px;
+}
+
+.person-2 {
+    left: 35%;
+    bottom: 30px;
+}
+
+.person-3 {
+    left: 55%;
+    bottom: 15px;
+}
+
+.person-4 {
+    left: 75%;
+    bottom: 25px;
+}
+
+.person-5 {
+    left: 85%;
+    bottom: 35px;
+}
+
+/* 中央のイーサリアムダイヤモンド */
+.central-eth-diamond {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+.eth-glow {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #ffffff, #f0f0f0);
+    transform: rotate(45deg);
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+    animation: glow 3s ease-in-out infinite alternate;
+}
+
+.eth-glow::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #627eea, #764ba2);
+    border-radius: 6px;
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 40px rgba(255, 255, 255, 0.8); }
+    100% { box-shadow: 0 0 60px rgba(255, 255, 255, 1); }
+}
+
+/* セクション共通スタイル */
+.section-label {
+    display: inline-block;
+    background: linear-gradient(135deg, #627eea, #764ba2);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: #1a1a1a;
+    line-height: 1.2;
+}
+
+.section-subtitle {
+    font-size: 1.125rem;
+    color: #6b7280;
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+/* ユースケースセクション */
+.use-cases {
+    padding: 120px 0;
+    background: #ffffff;
+}
+
+.use-cases-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.use-cases-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.use-case-main {
+    grid-row: span 2;
+}
+
+.use-case-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.use-case-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+}
+
+.use-case-card.featured {
+    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+}
+
+.card-illustration {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
+.featured .card-illustration {
+    height: 300px;
+    background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+}
+
+.illustration-scene {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* イラストレーション要素 */
+.scene-people {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.person-illustration {
+    position: absolute;
+    width: 30px;
+    height: 50px;
+    background: #ffffff;
+    border-radius: 15px 15px 0 0;
+    bottom: 20px;
+}
+
+.person-illustration::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 16px;
+    background: #fbb6ce;
+    border-radius: 50%;
+}
+
+.person-illustration.person-1 {
+    left: 20%;
+    background: #fef3c7;
+}
+
+.person-illustration.person-2 {
+    left: 50%;
+    background: #dbeafe;
+}
+
+.person-illustration.person-3 {
+    left: 80%;
+    background: #f3e8ff;
+}
+
+.scene-elements {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.laptop {
+    width: 40px;
+    height: 25px;
+    background: #1f2937;
+    border-radius: 4px;
+    position: relative;
+}
+
+.laptop::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #374151;
+    border-radius: 4px 4px 0 0;
+}
+
+.eth-symbol-small {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #627eea, #764ba2);
+    transform: rotate(45deg);
+    border-radius: 3px;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+/* 手でダイヤモンドを保持 */
+.hands-holding {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hand {
+    width: 40px;
+    height: 30px;
+    background: #fbb6ce;
+    border-radius: 20px;
+    position: absolute;
+}
+
+.hand-left {
+    left: 30%;
+    transform: rotate(-20deg);
+}
+
+.hand-right {
+    right: 30%;
+    transform: rotate(20deg);
+}
+
+.eth-diamond-small {
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, #627eea, #764ba2);
+    transform: rotate(45deg);
+    border-radius: 6px;
+    position: relative;
+    z-index: 2;
+}
+
+/* ネットワーク構造 */
+.network-structure {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.network-node {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #627eea, #764ba2);
+    border-radius: 50%;
+    position: absolute;
+}
+
+.network-node.center {
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.network-node.node-1 {
+    top: 20%;
+    left: 20%;
+}
+
+.network-node.node-2 {
+    top: 20%;
+    right: 20%;
+}
+
+.network-node.node-3 {
+    bottom: 20%;
+    left: 20%;
+}
+
+.network-node.node-4 {
+    bottom: 20%;
+    right: 20%;
+}
+
+/* アプリユーザー */
+.app-users {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user {
+    width: 25px;
+    height: 40px;
+    background: #ffffff;
+    border-radius: 12px 12px 0 0;
+    position: absolute;
+    bottom: 20px;
+}
+
+.user::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    background: #fbb6ce;
+    border-radius: 50%;
+}
+
+.user-1 {
+    left: 30%;
+    background: #dbeafe;
+}
+
+.user-2 {
+    right: 30%;
+    background: #f3e8ff;
+}
+
+.mobile-device {
+    width: 15px;
+    height: 25px;
+    background: #1f2937;
+    border-radius: 3px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* 資産取引 */
+.asset-trading {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.trading-counter {
+    width: 80px;
+    height: 40px;
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    border-radius: 8px;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.trader {
+    width: 20px;
+    height: 35px;
+    background: #ffffff;
+    border-radius: 10px 10px 0 0;
+    position: absolute;
+    bottom: 20px;
+}
+
+.trader::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: #fbb6ce;
+    border-radius: 50%;
+}
+
+.trader-1 {
+    left: 20%;
+    background: #fef3c7;
+}
+
+.trader-2 {
+    left: 50%;
+    transform: translateX(-50%);
+    background: #dbeafe;
+}
+
+.trader-3 {
+    right: 20%;
+    background: #f3e8ff;
+}
+
+.card-content {
+    padding: 32px;
+}
+
+.card-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #1a1a1a;
+}
+
+.card-content p {
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.card-link {
+    color: #627eea;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: color 0.3s ease;
+}
+
+.card-link:hover {
+    color: #4c63d2;
+}
+
+/* アクティビティセクション */
+.activity {
+    padding: 120px 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.activity .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.activity-illustration {
+    position: relative;
+    height: 400px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.activity-content {
+    text-align: left;
+}
+
+.activity-content .section-label {
+    margin-bottom: 16px;
+}
+
+.activity-content .section-title {
+    text-align: left;
+    margin-bottom: 16px;
+}
+
+.activity-content .section-subtitle {
+    margin-bottom: 40px;
+}
+
+.activity-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.stat-item {
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: #6b7280;
+    line-height: 1.4;
+}
+
+.activity-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #627eea, #764ba2);
+    color: white;
+    border-color: transparent;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(98, 126, 234, 0.3);
+}
+
+.btn-secondary {
+    background: white;
+    color: #1a1a1a;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:hover {
+    background: #f8fafc;
+    border-color: #627eea;
+    color: #627eea;
+}
+
+/* 学習セクション */
+.learn {
+    padding: 120px 0;
+    background: white;
+}
+
+.learn .container {
+    text-align: center;
+}
+
+.learn-topics {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.topic-card {
+    background: white;
+    padding: 48px;
+    border-radius: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.topic-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 32px;
+    color: #1a1a1a;
+}
+
+.topic-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.topic-list li {
+    margin-bottom: 0;
+}
+
+.topic-list a {
+    color: #627eea;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.topic-list a:hover {
+    color: #4c63d2;
+    background: #f8fafc;
+}
+
+.topic-list a::before {
+    content: '⚙️';
+    font-size: 16px;
+}
+
+.topic-list li:nth-child(2) a::before { content: '👛'; }
+.topic-list li:nth-child(3) a::before { content: '🚀'; }
+.topic-list li:nth-child(4) a::before { content: '📄'; }
+.topic-list li:nth-child(5) a::before { content: '🗺️'; }
+
+/* ビルダーセクション */
+.builders {
+    padding: 120px 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.builders .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.builders-illustration {
+    position: relative;
+    height: 500px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.builders-content {
+    text-align: left;
+}
+
+.builders-content .section-label {
+    margin-bottom: 16px;
+}
+
+.builders-content .section-title {
+    text-align: left;
+    margin-bottom: 16px;
+}
+
+.builders-content .section-subtitle {
+    margin-bottom: 40px;
+}
+
+.builders-actions {
+    margin-bottom: 48px;
+}
+
+.code-examples {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.example-card {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.example-card:hover {
+    transform: translateY(-4px);
+}
+
+.example-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #1a1a1a;
+}
+
+.example-card p {
+    color: #6b7280;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+/* コミュニティセクション */
+.community {
+    padding: 120px 0;
+    background: white;
+}
+
+.community .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.community-illustration {
+    position: relative;
+    height: 500px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.community-content {
+    text-align: left;
+}
+
+.community-content .section-label {
+    margin-bottom: 16px;
+}
+
+.community-content .section-title {
+    text-align: left;
+    margin-bottom: 16px;
+}
+
+.community-content .section-subtitle {
+    margin-bottom: 40px;
+}
+
+.community-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+}
+
+.community-calls {
+    background: #f8fafc;
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.community-calls h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+}
+
+.call-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.call-item:last-child {
+    border-bottom: none;
+}
+
+.call-info h5 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #1a1a1a;
+}
+
+.call-info p {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.call-action {
+    color: #627eea;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* フッター */
+.footer {
+    background: #1a1a1a;
+    color: white;
+    padding: 80px 0 40px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px;
+    margin-bottom: 48px;
+}
+
+.footer-section h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: white;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section li {
+    margin-bottom: 12px;
+}
+
+.footer-section a {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    border-top: 1px solid #374151;
+    padding-top: 32px;
+    text-align: center;
+    color: #9ca3af;
+    font-size: 14px;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 1024px) {
+    .hero-container,
+    .use-cases-layout,
+    .activity .container,
+    .builders .container,
+    .community .container {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+    
+    .hero-actions {
+        grid-template-columns: 1fr;
+    }
+    
+    .use-case-main {
+        grid-row: span 1;
+    }
+    
+    .use-case-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .activity-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .code-examples {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .nav-actions {
+        display: none;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .topic-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .container {
+        padding: 0 16px;
+    }
+    
+    .nav-container {
+        padding: 0 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .hero-actions {
+        gap: 12px;
+    }
+    
+    .action-card {
+        padding: 16px;
+    }
+    
+    .card-content {
+        padding: 24px;
+    }
+    
+    .stat-value {
+        font-size: 1.5rem;
+    }
+}
