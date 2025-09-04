@@ -356,6 +356,236 @@
     margin-bottom: 0;
 }
 
+/* Vision Section */
+.vision-section {
+    background: rgba(98, 98, 255, 0.05);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(98, 98, 255, 0.1);
+    margin-top: 2rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: cardFlowIn 0.8s ease 1.4s forwards;
+}
+
+.vision-section h3 {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* World Citizen Visual */
+.world-citizen-visual {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.globe-animation {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6262ff, #4a4aff);
+    position: relative;
+    animation: globeRotate 10s linear infinite;
+}
+
+.globe-animation::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.3));
+    animation: globeRotate 8s linear infinite reverse;
+}
+
+.connection-lines {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.connection-lines::before,
+.connection-lines::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 100px;
+    background: linear-gradient(to bottom, #6262ff, transparent);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: connectionPulse 2s ease-in-out infinite;
+}
+
+.connection-lines::after {
+    transform: translate(-50%, -50%) rotate(60deg);
+    animation-delay: 0.7s;
+}
+
+.citizen-icons {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.citizen-icon {
+    position: absolute;
+    font-size: 2rem;
+    animation: citizenFloat 3s ease-in-out infinite;
+}
+
+.citizen-icon:nth-child(1) {
+    top: 20%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.citizen-icon:nth-child(2) {
+    top: 20%;
+    right: 20%;
+    animation-delay: 1s;
+}
+
+.citizen-icon:nth-child(3) {
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    animation-delay: 2s;
+}
+
+/* Tech Features */
+.tech-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.tech-feature {
+    background: rgba(98, 98, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(98, 98, 255, 0.1);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: cardFlowIn 0.8s ease forwards;
+}
+
+.tech-feature:nth-child(1) { animation-delay: 0.2s; }
+.tech-feature:nth-child(2) { animation-delay: 0.4s; }
+.tech-feature:nth-child(3) { animation-delay: 0.6s; }
+
+.tech-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.tech-feature h3 {
+    color: var(--text-primary);
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.tech-feature p {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+/* Tech Visual */
+.tech-visual {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blockchain-network {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    border: 2px solid rgba(98, 98, 255, 0.3);
+    border-radius: 50%;
+    animation: networkPulse 3s ease-in-out infinite;
+}
+
+.global-connections {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.global-connections::before,
+.global-connections::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 150px;
+    background: linear-gradient(to bottom, #6262ff, transparent);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: connectionFlow 2s ease-in-out infinite;
+}
+
+.global-connections::after {
+    transform: translate(-50%, -50%) rotate(45deg);
+    animation-delay: 1s;
+}
+
+.tech-icons {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.tech-icon-visual {
+    position: absolute;
+    font-size: 1.5rem;
+    animation: techFloat 2s ease-in-out infinite;
+}
+
+.tech-icon-visual:nth-child(1) {
+    top: 30%;
+    left: 30%;
+    animation-delay: 0s;
+}
+
+.tech-icon-visual:nth-child(2) {
+    top: 30%;
+    right: 30%;
+    animation-delay: 0.7s;
+}
+
+.tech-icon-visual:nth-child(3) {
+    bottom: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    animation-delay: 1.4s;
+}
+
 /* Navigation Buttons */
 .navigation-button {
     position: absolute;
@@ -435,6 +665,66 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes globeRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes connectionPulse {
+    0%, 100% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scaleY(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scaleY(1);
+    }
+}
+
+@keyframes citizenFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes networkPulse {
+    0%, 100% {
+        border-color: rgba(98, 98, 255, 0.3);
+        transform: scale(1);
+    }
+    50% {
+        border-color: rgba(98, 98, 255, 0.6);
+        transform: scale(1.05);
+    }
+}
+
+@keyframes connectionFlow {
+    0%, 100% {
+        opacity: 0.2;
+        transform: translate(-50%, -50%) scaleY(0.3);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scaleY(1);
+    }
+}
+
+@keyframes techFloat {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(5deg);
     }
 }
 
