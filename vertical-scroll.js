@@ -124,14 +124,32 @@ class VerticalScrollNavigation {
     }
 
     setupScrollDetection() {
-        // Disable all scroll navigation
-        this.scrollContainer.addEventListener('wheel', (e) => {
-            e.preventDefault();
+        // Enable native scroll
+        document.body.style.overflow = 'auto';
+        this.scrollContainer.style.overflow = 'visible';
+        
+        // Add scroll event listener for section visibility
+        window.addEventListener('scroll', () => {
+            this.updateActiveSection();
         });
+    }
 
-        // Disable native scroll
-        document.body.style.overflow = 'hidden';
-        this.scrollContainer.style.overflow = 'hidden';
+    updateActiveSection() {
+        const scrollPosition = window.scrollY;
+        const windowHeight = window.innerHeight;
+        
+        this.sections.forEach((section, index) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionCenter = sectionTop + sectionHeight / 2;
+            
+            // Check if section is in viewport
+            if (scrollPosition + windowHeight / 2 >= sectionTop && 
+                scrollPosition + windowHeight / 2 <= sectionTop + sectionHeight) {
+                this.currentStep = index + 1;
+                this.updateNavigation();
+            }
+        });
     }
 
     detectCurrentSection() {
@@ -153,26 +171,18 @@ class VerticalScrollNavigation {
         const targetSection = this.sections[stepNumber - 1];
         
         if (targetSection) {
-            // Hide all sections first
-            this.sections.forEach(section => {
-                section.classList.remove('active');
-                section.style.opacity = '0';
-                section.style.transform = 'translateY(100px)';
+            // Smooth scroll to section
+            targetSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
-
-            // Show target section
-            targetSection.classList.add('active');
-            targetSection.style.opacity = '1';
-            targetSection.style.transform = 'translateY(0)';
-
+            
             // Update current step
             this.updateCurrentStep(stepNumber);
             
-            // Animate section
             setTimeout(() => {
-                this.animateSection(stepNumber);
                 this.isTransitioning = false;
-            }, 300);
+            }, 800);
         }
     }
 

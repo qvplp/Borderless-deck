@@ -4,15 +4,13 @@
 .vertical-scroll-container {
     position: relative;
     width: 100%;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
+    overflow: visible;
 }
 
 /* Scroll Sections */
 .scroll-section {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -24,7 +22,7 @@
     transform: translateY(100px);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     background: var(--primary-bg);
-    overflow-y: auto;
+    margin-bottom: 2rem;
 }
 
 .scroll-section.active {
@@ -33,7 +31,8 @@
 }
 
 .scroll-section.prev {
-    transform: translateY(-100px);
+    opacity: 0.3;
+    transform: translateY(0);
 }
 
 /* Page Container */
