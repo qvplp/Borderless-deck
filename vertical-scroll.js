@@ -292,12 +292,12 @@ class VerticalScrollNavigation {
     }
 }
 
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    window.verticalScroll = new VerticalScrollNavigation();
-});
-
 // Export for potential module usage
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = VerticalScrollNavigation;
 }
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new VerticalScrollNavigation();
+});

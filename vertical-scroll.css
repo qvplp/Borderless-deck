@@ -8,6 +8,12 @@
     overflow: visible;
 }
 
+/* Ensure body can scroll */
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 /* Scroll Sections */
 .scroll-section {
     position: relative;
