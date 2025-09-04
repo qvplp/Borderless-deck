@@ -6,12 +6,23 @@
     <title>Ethereum Foundation - Welcome to the Infinite Garden</title>
     <meta name="description" content="Ethereum Foundation - Building the decentralized future through the infinite garden of possibilities">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="game-styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="responsive.css">
 </head>
 <body>
+    <!-- Game Progress Indicator -->
+    <div class="game-progress">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-text">
+            <span id="currentStep">1</span> / <span id="totalSteps">6</span>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -19,14 +30,12 @@
                 <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDQwQzMxLjA0NTcgNDAgNDAgMzEuMDQ1NyA0MCAyMEM0MCA4Ljk1NDMgMzEuMDQ1NyAwIDIwIDBDOC45NTQzIDAgMCA4Ljk1NDMgMCAyMEMwIDMxLjA0NTcgOC45NTQzIDQwIDIwIDQwWiIgZmlsbD0iIzYyNjJGRiIvPgo8cGF0aCBkPSJNMjAgMzJDMjYuNjI3NCAzMiAzMiAyNi42Mjc0IDMyIDIwQzMyIDEzLjM3MjYgMjYuNjI3NCA4IDIwIDhDMTMuMzcyNiA4IDggMTMuMzcyNiA4IDIwQzggMjYuNjI3NCAxMy4zNzI2IDMyIDIwIDMyWiIgZmlsbD0iI0ZGRkZGRiIvPgo8L3N2Zz4K" alt="Ethereum Foundation" class="logo">
             </div>
             <div class="nav-menu">
-                <a href="#home" class="nav-link active">Home</a>
-                <a href="#infinite-garden" class="nav-link">Infinite Garden</a>
-                <a href="#what-is-ethereum" class="nav-link">What is Ethereum?</a>
-                <a href="#what-is-ef" class="nav-link">What is the EF?</a>
-                <a href="#organization" class="nav-link">EF Organization</a>
-                <a href="#our-story" class="nav-link">Our Story</a>
-                <a href="#philosophy" class="nav-link">EF Philosophy</a>
-                <a href="#blog" class="nav-link">EF Blog</a>
+                <a href="#" class="nav-link" data-step="1">Home</a>
+                <a href="#" class="nav-link" data-step="2">Infinite Garden</a>
+                <a href="#" class="nav-link" data-step="3">What is Ethereum?</a>
+                <a href="#" class="nav-link" data-step="4">What is the EF?</a>
+                <a href="#" class="nav-link" data-step="5">Our Story</a>
+                <a href="#" class="nav-link" data-step="6">Philosophy</a>
             </div>
             <div class="nav-toggle">
                 <span class="bar"></span>
@@ -36,168 +45,238 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    <span class="title-line">Welcome to the</span>
-                    <span class="title-line infinite-text">Infinite Garden</span>
-                </h1>
-                <p class="hero-subtitle">
-                    A decentralized ecosystem where innovation grows organically, 
-                    connecting minds and ideas across the infinite possibilities of blockchain technology.
-                </p>
-                <div class="hero-cta">
-                    <button class="cta-button primary">
-                        <span>Next</span>
-                        <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </button>
-                    <p class="scroll-hint">Scroll down or click here to begin</p>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="garden-container">
-                    <div class="garden-node node-1"></div>
-                    <div class="garden-node node-2"></div>
-                    <div class="garden-node node-3"></div>
-                    <div class="garden-node node-4"></div>
-                    <div class="garden-node node-5"></div>
-                    <div class="garden-node node-6"></div>
-                    <div class="garden-connection"></div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="scroll-line"></div>
-            <div class="scroll-dot"></div>
-        </div>
-    </section>
-
-    <!-- Infinite Garden Section -->
-    <section id="infinite-garden" class="section garden-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">The Infinite Garden</h2>
-                <p class="section-description">
-                    A metaphor for the decentralized ecosystem where ideas, innovations, 
-                    and communities grow organically without central control.
-                </p>
-            </div>
-            <div class="garden-grid">
-                <div class="garden-card">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                        </svg>
+    <!-- Game Container -->
+    <div class="game-container">
+        <!-- Step 1: Welcome -->
+        <section class="game-step active" data-step="1">
+            <div class="step-content">
+                <div class="step-visual">
+                    <div class="ethereum-logo-glow">
+                        <div class="logo-particles"></div>
                     </div>
-                    <h3>Decentralized Growth</h3>
-                    <p>Ideas flourish without central authority, creating a truly organic ecosystem of innovation.</p>
                 </div>
-                <div class="garden-card">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="3"/>
-                            <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"/>
-                        </svg>
-                    </div>
-                    <h3>Interconnected Networks</h3>
-                    <p>Every node connects to others, forming a resilient and distributed network of possibilities.</p>
-                </div>
-                <div class="garden-card">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 12l2 2 4-4"/>
-                            <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/>
-                        </svg>
-                    </div>
-                    <h3>Trust & Transparency</h3>
-                    <p>Built on cryptographic principles that ensure trust and transparency in every interaction.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- What is Ethereum Section -->
-    <section id="what-is-ethereum" class="section ethereum-section">
-        <div class="container">
-            <div class="content-grid">
-                <div class="content-text">
-                    <h2 class="section-title">What is Ethereum?</h2>
-                    <p class="section-description">
-                        Ethereum is a decentralized platform that enables smart contracts and decentralized applications (DApps) 
-                        to be built and deployed without any downtime, fraud, control, or interference from a third party.
+                <div class="step-text">
+                    <h1 class="step-title">Welcome to the Infinite Garden</h1>
+                    <p class="step-description">
+                        A decentralized ecosystem where innovation grows organically, 
+                        connecting minds and ideas across the infinite possibilities of blockchain technology.
                     </p>
-                    <div class="feature-list">
+                    <button class="game-button next-button" data-next="2">
+                        <span>Click to explore</span>
+                        <div class="button-icon">→</div>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 2: Infinite Garden -->
+        <section class="game-step" data-step="2">
+            <div class="step-content">
+                <div class="step-visual">
+                    <div class="garden-scene">
+                        <div class="garden-tree"></div>
+                        <div class="garden-butterfly butterfly-1"></div>
+                        <div class="garden-butterfly butterfly-2"></div>
+                        <div class="garden-particles"></div>
+                    </div>
+                </div>
+                <div class="step-text">
+                    <h1 class="step-title">The Infinite Garden</h1>
+                    <p class="step-description">
+                        A metaphor for the decentralized ecosystem where ideas, innovations, 
+                        and communities grow organically without central control.
+                    </p>
+                    <div class="garden-features">
                         <div class="feature-item">
-                            <div class="feature-icon">⚡</div>
-                            <div class="feature-content">
-                                <h4>Smart Contracts</h4>
-                                <p>Self-executing contracts with terms directly written into code</p>
-                            </div>
+                            <div class="feature-icon">🌱</div>
+                            <span>Decentralized Growth</span>
                         </div>
                         <div class="feature-item">
-                            <div class="feature-icon">🌐</div>
-                            <div class="feature-content">
-                                <h4>Decentralized Apps</h4>
-                                <p>Applications that run on a peer-to-peer network of computers</p>
-                            </div>
+                            <div class="feature-icon">🕸️</div>
+                            <span>Interconnected Networks</span>
                         </div>
                         <div class="feature-item">
                             <div class="feature-icon">🔒</div>
-                            <div class="feature-content">
-                                <h4>Security</h4>
-                                <p>Cryptographically secure and tamper-proof by design</p>
-                            </div>
+                            <span>Trust & Transparency</span>
                         </div>
                     </div>
-                </div>
-                <div class="content-visual">
-                    <div class="ethereum-visual">
-                        <div class="blockchain-animation">
-                            <div class="block"></div>
-                            <div class="block"></div>
-                            <div class="block"></div>
-                            <div class="block"></div>
-                        </div>
-                    </div>
+                    <button class="game-button next-button" data-next="3">
+                        <span>Continue exploring</span>
+                        <div class="button-icon">→</div>
+                    </button>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- What is the EF Section -->
-    <section id="what-is-ef" class="section ef-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">What is the EF?</h2>
-                <p class="section-description">
-                    The Ethereum Foundation (EF) is a non-profit organization dedicated to supporting Ethereum 
-                    and related technologies. We fund research, development, and education to advance the ecosystem.
-                </p>
+        <!-- Step 3: What is Ethereum -->
+        <section class="game-step" data-step="3">
+            <div class="step-content">
+                <div class="step-visual">
+                    <div class="blockchain-animation">
+                        <div class="block-chain">
+                            <div class="block"></div>
+                            <div class="block"></div>
+                            <div class="block"></div>
+                            <div class="block"></div>
+                        </div>
+                        <div class="connection-lines"></div>
+                    </div>
+                </div>
+                <div class="step-text">
+                    <h1 class="step-title">What is Ethereum?</h1>
+                    <p class="step-description">
+                        Ethereum is a decentralized platform that enables smart contracts and 
+                        decentralized applications (DApps) to be built and deployed without any 
+                        downtime, fraud, control, or interference from a third party.
+                    </p>
+                    <div class="ethereum-features">
+                        <div class="feature-card">
+                            <div class="card-icon">⚡</div>
+                            <h3>Smart Contracts</h3>
+                            <p>Self-executing contracts with terms directly written into code</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="card-icon">🌐</div>
+                            <h3>Decentralized Apps</h3>
+                            <p>Applications that run on a peer-to-peer network of computers</p>
+                        </div>
+                    </div>
+                    <button class="game-button next-button" data-next="4">
+                        <span>Learn more</span>
+                        <div class="button-icon">→</div>
+                    </button>
+                </div>
             </div>
-            <div class="ef-stats">
-                <div class="stat-item">
-                    <div class="stat-number">$100M+</div>
-                    <div class="stat-label">Funding Committed</div>
+        </section>
+
+        <!-- Step 4: What is the EF -->
+        <section class="game-step" data-step="4">
+            <div class="step-content">
+                <div class="step-visual">
+                    <div class="ef-stats-visual">
+                        <div class="stat-circle" data-value="100">
+                            <span class="stat-number">$100M+</span>
+                            <span class="stat-label">Funding</span>
+                        </div>
+                        <div class="stat-circle" data-value="500">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="stat-circle" data-value="50">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Countries</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">500+</div>
-                    <div class="stat-label">Projects Supported</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">Countries</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">10+</div>
-                    <div class="stat-label">Years of Innovation</div>
+                <div class="step-text">
+                    <h1 class="step-title">What is the EF?</h1>
+                    <p class="step-description">
+                        The Ethereum Foundation (EF) is a non-profit organization dedicated to 
+                        supporting Ethereum and related technologies. We fund research, development, 
+                        and education to advance the ecosystem.
+                    </p>
+                    <div class="ef-mission">
+                        <h3>Our Mission</h3>
+                        <p>To support and grow the Ethereum ecosystem through research, development, 
+                        and education, fostering a decentralized future for all.</p>
+                    </div>
+                    <button class="game-button next-button" data-next="5">
+                        <span>Discover our story</span>
+                        <div class="button-icon">→</div>
+                    </button>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Step 5: Our Story -->
+        <section class="game-step" data-step="5">
+            <div class="step-content">
+                <div class="step-visual">
+                    <div class="timeline-visual">
+                        <div class="timeline-item" data-year="2014">
+                            <div class="timeline-dot"></div>
+                            <span>Ethereum Founded</span>
+                        </div>
+                        <div class="timeline-item" data-year="2015">
+                            <div class="timeline-dot"></div>
+                            <span>Mainnet Launch</span>
+                        </div>
+                        <div class="timeline-item" data-year="2020">
+                            <div class="timeline-dot"></div>
+                            <span>Ethereum 2.0</span>
+                        </div>
+                        <div class="timeline-item" data-year="2025">
+                            <div class="timeline-dot"></div>
+                            <span>Infinite Garden</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-text">
+                    <h1 class="step-title">Our Story</h1>
+                    <p class="step-description">
+                        From a simple idea to a global movement, Ethereum has grown into the 
+                        world's leading smart contract platform, empowering developers and 
+                        communities worldwide.
+                    </p>
+                    <div class="story-highlights">
+                        <div class="highlight">
+                            <h4>2014</h4>
+                            <p>Ethereum was conceived by Vitalik Buterin</p>
+                        </div>
+                        <div class="highlight">
+                            <h4>2015</h4>
+                            <p>Mainnet launched, marking the beginning of a new era</p>
+                        </div>
+                        <div class="highlight">
+                            <h4>Today</h4>
+                            <p>Supporting thousands of projects and millions of users</p>
+                        </div>
+                    </div>
+                    <button class="game-button next-button" data-next="6">
+                        <span>Explore philosophy</span>
+                        <div class="button-icon">→</div>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 6: Philosophy -->
+        <section class="game-step" data-step="6">
+            <div class="step-content">
+                <div class="step-visual">
+                    <div class="philosophy-visual">
+                        <div class="infinite-symbol">
+                            <div class="symbol-ring ring-1"></div>
+                            <div class="symbol-ring ring-2"></div>
+                            <div class="symbol-ring ring-3"></div>
+                        </div>
+                        <div class="philosophy-particles"></div>
+                    </div>
+                </div>
+                <div class="step-text">
+                    <h1 class="step-title">EF Philosophy</h1>
+                    <p class="step-description">
+                        "A finite game is played for the purpose of winning. An infinite game 
+                        for the purpose of continuing the play." - James P. Carse
+                    </p>
+                    <div class="philosophy-content">
+                        <h3>The Infinite Garden</h3>
+                        <p>Our vision for Ethereum is the Infinite Garden. Ethereum is more than 
+                        a technology, it is a diverse ecosystem of individuals and organizations 
+                        that build and grow alongside a protocol.</p>
+                        <p>The Ethereum ecosystem wasn't something that was designed by any one 
+                        individual or organization, but it organically evolved with the support 
+                        of people who nurture the ecosystem to become more vibrant and diverse.</p>
+                    </div>
+                    <button class="game-button restart-button" data-next="1">
+                        <span>Start over</span>
+                        <div class="button-icon">🔄</div>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
 
     <!-- Footer -->
     <footer class="footer">
@@ -236,5 +315,7 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="game-script.js"></script>
 </body>
 </html>
+

@@ -1,0 +1,776 @@
+/* Game-Style CSS for Ethereum Foundation Clone */
+
+/* Game Progress Indicator */
+.game-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(98, 98, 255, 0.2);
+}
+
+.progress-bar {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    margin-right: 1rem;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #6262ff, #4a4aff);
+    border-radius: 2px;
+    transition: width 0.5s ease;
+    width: 16.66%; /* 1/6 steps */
+}
+
+.progress-text {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    min-width: 60px;
+    text-align: right;
+}
+
+/* Game Container */
+.game-container {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Game Steps */
+.game-step {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--primary-bg);
+}
+
+.game-step.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.game-step.prev {
+    transform: translateX(-100%);
+}
+
+.step-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 2rem;
+    height: 100%;
+}
+
+.step-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+}
+
+.step-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 2rem 0;
+}
+
+.step-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #6262ff 0%, #4a4aff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.step-description {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 500px;
+}
+
+/* Game Button */
+.game-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #6262ff 0%, #4a4aff 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    min-width: 200px;
+    justify-content: center;
+}
+
+.game-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.game-button:hover::before {
+    left: 100%;
+}
+
+.game-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(98, 98, 255, 0.3);
+}
+
+.game-button:active {
+    transform: translateY(0);
+}
+
+.button-icon {
+    font-size: 1.25rem;
+    transition: transform 0.3s ease;
+}
+
+.game-button:hover .button-icon {
+    transform: translateX(4px);
+}
+
+.restart-button .button-icon {
+    animation: rotate 2s linear infinite;
+}
+
+/* Step 1: Welcome Visual */
+.ethereum-logo-glow {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ethereum-logo-glow::before {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, #6262ff, #4a4aff);
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.6;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+.logo-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.logo-particles::before,
+.logo-particles::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #6262ff;
+    border-radius: 50%;
+    animation: float 3s ease-in-out infinite;
+}
+
+.logo-particles::before {
+    top: 20%;
+    left: 30%;
+    animation-delay: 0s;
+}
+
+.logo-particles::after {
+    top: 60%;
+    right: 25%;
+    animation-delay: 1.5s;
+}
+
+/* Step 2: Garden Scene */
+.garden-scene {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.garden-tree {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 200px solid #4a9eff;
+    animation: growTree 2s ease-out 0.5s forwards;
+}
+
+.garden-butterfly {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(45deg, #ff6b9d, #c44569);
+    border-radius: 50% 10px 50% 10px;
+    animation: flutter 4s ease-in-out infinite;
+}
+
+.butterfly-1 {
+    top: 30%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.butterfly-2 {
+    top: 60%;
+    right: 25%;
+    animation-delay: 2s;
+    background: linear-gradient(45deg, #4ecdc4, #44a08d);
+}
+
+.garden-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+/* Step 3: Blockchain Animation */
+.blockchain-animation {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.block-chain {
+    display: flex;
+    gap: 1rem;
+}
+
+.block {
+    width: 60px;
+    height: 80px;
+    background: linear-gradient(135deg, #6262ff, #4a4aff);
+    border-radius: 8px;
+    position: relative;
+    animation: blockPulse 2s ease-in-out infinite;
+}
+
+.block:nth-child(2) { animation-delay: 0.5s; }
+.block:nth-child(3) { animation-delay: 1s; }
+.block:nth-child(4) { animation-delay: 1.5s; }
+
+.block::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 1px;
+}
+
+.connection-lines {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #6262ff, transparent);
+    animation: dataFlow 3s linear infinite;
+}
+
+/* Step 4: EF Stats Visual */
+.ef-stats-visual {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6262ff, #4a4aff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: statPulse 3s ease-in-out infinite;
+}
+
+.stat-circle:nth-child(2) { animation-delay: 1s; }
+.stat-circle:nth-child(3) { animation-delay: 2s; }
+
+.stat-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Step 5: Timeline Visual */
+.timeline-visual {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+}
+
+.timeline-dot {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #6262ff, #4a4aff);
+    border-radius: 50%;
+    animation: timelinePulse 2s ease-in-out infinite;
+}
+
+.timeline-item:nth-child(2) .timeline-dot { animation-delay: 0.5s; }
+.timeline-item:nth-child(3) .timeline-dot { animation-delay: 1s; }
+.timeline-item:nth-child(4) .timeline-dot { animation-delay: 1.5s; }
+
+.timeline-item span {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    text-align: center;
+    max-width: 100px;
+}
+
+/* Step 6: Philosophy Visual */
+.philosophy-visual {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.infinite-symbol {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.symbol-ring {
+    position: absolute;
+    border: 2px solid #6262ff;
+    border-radius: 50%;
+    animation: rotate 10s linear infinite;
+}
+
+.ring-1 {
+    width: 200px;
+    height: 200px;
+    top: 0;
+    left: 0;
+    opacity: 0.3;
+}
+
+.ring-2 {
+    width: 150px;
+    height: 150px;
+    top: 25px;
+    left: 25px;
+    opacity: 0.5;
+    animation-direction: reverse;
+    animation-duration: 8s;
+}
+
+.ring-3 {
+    width: 100px;
+    height: 100px;
+    top: 50px;
+    left: 50px;
+    opacity: 0.7;
+    animation-duration: 6s;
+}
+
+.philosophy-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(98, 98, 255, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    animation: philosophyFloat 4s ease-in-out infinite;
+}
+
+/* Feature Items */
+.garden-features {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: rgba(98, 98, 255, 0.1);
+    border-radius: 25px;
+    border: 1px solid rgba(98, 98, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    background: rgba(98, 98, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.feature-icon {
+    font-size: 1.25rem;
+}
+
+.ethereum-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.feature-card {
+    padding: 1.5rem;
+    background: rgba(98, 98, 255, 0.05);
+    border-radius: 16px;
+    border: 1px solid rgba(98, 98, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    background: rgba(98, 98, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.card-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.feature-card p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.ef-mission {
+    background: rgba(98, 98, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 16px;
+    border: 1px solid rgba(98, 98, 255, 0.1);
+    margin-bottom: 2rem;
+}
+
+.ef-mission h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.ef-mission p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.story-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.highlight {
+    text-align: center;
+    padding: 1rem;
+}
+
+.highlight h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #6262ff;
+    margin-bottom: 0.5rem;
+}
+
+.highlight p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.philosophy-content {
+    background: rgba(98, 98, 255, 0.05);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(98, 98, 255, 0.1);
+    margin-bottom: 2rem;
+}
+
+.philosophy-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.philosophy-content p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.philosophy-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(180deg);
+    }
+}
+
+@keyframes growTree {
+    from {
+        width: 0;
+        height: 0;
+    }
+    to {
+        width: 100px;
+        height: 200px;
+    }
+}
+
+@keyframes flutter {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+    75% {
+        transform: translateY(10px) rotate(-5deg);
+    }
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+@keyframes blockPulse {
+    0%, 100% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scaleY(1.1);
+        opacity: 0.8;
+    }
+}
+
+@keyframes dataFlow {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes statPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes timelinePulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(98, 98, 255, 0.4);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 10px rgba(98, 98, 255, 0);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes philosophyFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .step-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .step-title {
+        font-size: 2.5rem;
+    }
+    
+    .step-description {
+        font-size: 1rem;
+    }
+    
+    .garden-features {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .ethereum-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .story-highlights {
+        grid-template-columns: 1fr;
+    }
+    
+    .ef-stats-visual {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .timeline-visual {
+        flex-direction: column;
+        height: auto;
+        gap: 2rem;
+    }
+    
+    .timeline-item {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 480px) {
+    .step-title {
+        font-size: 2rem;
+    }
+    
+    .game-button {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.875rem;
+        min-width: 150px;
+    }
+    
+    .stat-circle {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .stat-number {
+        font-size: 1.25rem;
+    }
+}
