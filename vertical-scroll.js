@@ -49,29 +49,36 @@ class VerticalScrollNavigation {
             });
         });
 
-        // Keyboard navigation
+        // Keyboard navigation with debouncing
         document.addEventListener('keydown', (e) => {
-            if (this.isTransitioning) return;
-
-            switch(e.key) {
-                case 'ArrowDown':
-                case ' ':
-                    e.preventDefault();
-                    this.nextStep();
-                    break;
-                case 'ArrowUp':
-                    e.preventDefault();
-                    this.previousStep();
-                    break;
-                case 'Home':
-                    e.preventDefault();
-                    this.goToStep(1);
-                    break;
-                case 'End':
-                    e.preventDefault();
-                    this.goToStep(this.totalSteps);
-                    break;
+            if (this.isTransitioning) {
+                e.preventDefault();
+                return;
             }
+
+            // Debounce keyboard events
+            clearTimeout(this.keyTimeout);
+            this.keyTimeout = setTimeout(() => {
+                switch(e.key) {
+                    case 'ArrowDown':
+                    case ' ':
+                        e.preventDefault();
+                        this.nextStep();
+                        break;
+                    case 'ArrowUp':
+                        e.preventDefault();
+                        this.previousStep();
+                        break;
+                    case 'Home':
+                        e.preventDefault();
+                        this.goToStep(1);
+                        break;
+                    case 'End':
+                        e.preventDefault();
+                        this.goToStep(this.totalSteps);
+                        break;
+                }
+            }, 100);
         });
 
         // Touch/swipe support
@@ -81,20 +88,35 @@ class VerticalScrollNavigation {
     setupTouchEvents() {
         let startY = 0;
         let endY = 0;
+        let touchStartTime = 0;
 
         this.scrollContainer.addEventListener('touchstart', (e) => {
+            if (this.isTransitioning) {
+                e.preventDefault();
+                return;
+            }
             startY = e.touches[0].clientY;
+            touchStartTime = Date.now();
         });
 
         this.scrollContainer.addEventListener('touchend', (e) => {
+            if (this.isTransitioning) {
+                e.preventDefault();
+                return;
+            }
             endY = e.changedTouches[0].clientY;
-            this.handleSwipe(startY, endY);
+            const touchDuration = Date.now() - touchStartTime;
+            
+            // Only process swipe if it's quick enough
+            if (touchDuration < 500) {
+                this.handleSwipe(startY, endY);
+            }
         });
     }
 
     handleSwipe(startY, endY) {
         const deltaY = endY - startY;
-        const minSwipeDistance = 50;
+        const minSwipeDistance = 80; // Increased threshold
 
         if (Math.abs(deltaY) > minSwipeDistance) {
             if (deltaY > 0) {
@@ -108,38 +130,34 @@ class VerticalScrollNavigation {
     }
 
     setupScrollDetection() {
-        // Mouse wheel navigation
+        // Mouse wheel navigation with debouncing
         this.scrollContainer.addEventListener('wheel', (e) => {
-            if (this.isTransitioning) return;
+            if (this.isTransitioning) {
+                e.preventDefault();
+                return;
+            }
             
             e.preventDefault();
-            if (e.deltaY > 0) {
-                this.nextStep();
-            } else if (e.deltaY < 0) {
-                this.previousStep();
-            }
+            
+            // Debounce wheel events
+            clearTimeout(this.wheelTimeout);
+            this.wheelTimeout = setTimeout(() => {
+                if (e.deltaY > 0) {
+                    this.nextStep();
+                } else if (e.deltaY < 0) {
+                    this.previousStep();
+                }
+            }, 50);
         });
 
-        // Scroll-based section detection
-        window.addEventListener('scroll', () => {
-            this.detectCurrentSection();
-        });
+        // Disable native scroll
+        document.body.style.overflow = 'hidden';
+        this.scrollContainer.style.overflow = 'hidden';
     }
 
     detectCurrentSection() {
-        const scrollPosition = window.scrollY;
-        const windowHeight = window.innerHeight;
-        
-        this.sections.forEach((section, index) => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionCenter = sectionTop + (sectionHeight / 2);
-            
-            if (scrollPosition >= sectionTop - windowHeight / 2 && 
-                scrollPosition < sectionTop + sectionHeight - windowHeight / 2) {
-                this.updateCurrentStep(index + 1);
-            }
-        });
+        // This method is no longer needed as we control navigation manually
+        // Keeping it for potential future use
     }
 
     startNavigation() {
@@ -156,11 +174,17 @@ class VerticalScrollNavigation {
         const targetSection = this.sections[stepNumber - 1];
         
         if (targetSection) {
-            // Smooth scroll to section
-            targetSection.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+            // Hide all sections first
+            this.sections.forEach(section => {
+                section.classList.remove('active');
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(100px)';
             });
+
+            // Show target section
+            targetSection.classList.add('active');
+            targetSection.style.opacity = '1';
+            targetSection.style.transform = 'translateY(0)';
 
             // Update current step
             this.updateCurrentStep(stepNumber);
@@ -169,7 +193,7 @@ class VerticalScrollNavigation {
             setTimeout(() => {
                 this.animateSection(stepNumber);
                 this.isTransitioning = false;
-            }, 500);
+            }, 300);
         }
     }
 

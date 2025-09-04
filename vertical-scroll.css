@@ -4,15 +4,17 @@
 .vertical-scroll-container {
     position: relative;
     width: 100%;
-    min-height: 100vh;
-    overflow-x: hidden;
+    height: 100vh;
+    overflow: hidden;
 }
 
 /* Scroll Sections */
 .scroll-section {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,7 +22,7 @@
     padding: 4rem 2rem;
     opacity: 0;
     transform: translateY(100px);
-    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     background: var(--primary-bg);
 }
 
