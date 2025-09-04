@@ -25,6 +25,7 @@ class EthereumGame {
         this.progressFill = document.getElementById('progressFill');
         this.currentStepElement = document.getElementById('currentStep');
         this.totalStepsElement = document.getElementById('totalSteps');
+        this.scrollDots = document.querySelectorAll('.scroll-dot');
     }
 
     setupEventListeners() {
@@ -60,17 +61,28 @@ class EthereumGame {
             });
         });
 
+        // Scroll dots
+        this.scrollDots.forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                e.preventDefault();
+                const step = parseInt(dot.dataset.step);
+                if (step && !this.isTransitioning) {
+                    this.goToStep(step);
+                }
+            });
+        });
+
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (this.isTransitioning) return;
 
             switch(e.key) {
-                case 'ArrowRight':
+                case 'ArrowDown':
                 case ' ':
                     e.preventDefault();
                     this.nextStep();
                     break;
-                case 'ArrowLeft':
+                case 'ArrowUp':
                     e.preventDefault();
                     this.previousStep();
                     break;
@@ -82,6 +94,18 @@ class EthereumGame {
                     e.preventDefault();
                     this.goToStep(this.totalSteps);
                     break;
+            }
+        });
+
+        // Mouse wheel navigation
+        this.gameContainer.addEventListener('wheel', (e) => {
+            if (this.isTransitioning) return;
+            
+            e.preventDefault();
+            if (e.deltaY > 0) {
+                this.nextStep();
+            } else if (e.deltaY < 0) {
+                this.previousStep();
             }
         });
 
@@ -112,14 +136,14 @@ class EthereumGame {
         const deltaY = endY - startY;
         const minSwipeDistance = 50;
 
-        // Check if it's a horizontal swipe
-        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
-            if (deltaX > 0) {
-                // Swipe right - go to previous step
-                this.previousStep();
-            } else {
-                // Swipe left - go to next step
+        // Check if it's a vertical swipe
+        if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > minSwipeDistance) {
+            if (deltaY > 0) {
+                // Swipe down - go to next step
                 this.nextStep();
+            } else {
+                // Swipe up - go to previous step
+                this.previousStep();
             }
         }
     }
@@ -135,7 +159,7 @@ class EthereumGame {
         // Add entrance animations to each step
         this.steps.forEach((step, index) => {
             step.style.opacity = '0';
-            step.style.transform = 'translateX(100%)';
+            step.style.transform = 'translateY(50px)';
         });
 
         // Animate the first step
@@ -158,32 +182,27 @@ class EthereumGame {
         }
 
         this.isTransitioning = true;
-        const currentStepElement = this.steps[this.currentStep - 1];
         const targetStepElement = this.steps[stepNumber - 1];
 
-        // Animate current step out
-        this.animateStepOut(currentStepElement, () => {
-            // Hide all steps
-            this.steps.forEach(step => {
-                step.classList.remove('active');
-                step.style.opacity = '0';
-                step.style.transform = 'translateX(100%)';
-            });
-
-            // Show target step
-            this.currentStep = stepNumber;
-            this.showStep(stepNumber);
-            this.updateProgress();
-            this.updateNavigation();
-            this.animateStepIn(targetStepElement);
-
-            // Animate step elements
-            setTimeout(() => {
-                this.animateStepElements(stepNumber);
-            }, 300);
-
-            this.isTransitioning = false;
+        // Hide all steps first
+        this.steps.forEach(step => {
+            step.classList.remove('active');
+            step.style.opacity = '0';
+            step.style.transform = 'translateY(50px)';
         });
+
+        // Show target step
+        this.currentStep = stepNumber;
+        this.showStep(stepNumber);
+        this.updateProgress();
+        this.updateNavigation();
+        this.animateStepIn(targetStepElement);
+
+        // Animate step elements
+        setTimeout(() => {
+            this.animateStepElements(stepNumber);
+            this.isTransitioning = false;
+        }, 300);
     }
 
     nextStep() {
@@ -209,7 +228,7 @@ class EthereumGame {
         if (!stepElement) return;
 
         stepElement.style.opacity = '1';
-        stepElement.style.transform = 'translateX(0)';
+        stepElement.style.transform = 'translateY(0)';
         stepElement.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
     }
 
@@ -219,7 +238,7 @@ class EthereumGame {
             return;
         }
 
-        stepElement.style.transform = 'translateX(-100%)';
+        stepElement.style.transform = 'translateY(-50px)';
         stepElement.style.opacity = '0';
         stepElement.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
 
@@ -275,6 +294,16 @@ class EthereumGame {
                 link.classList.add('active');
             } else {
                 link.classList.remove('active');
+            }
+        });
+
+        // Update scroll dots
+        this.scrollDots.forEach((dot, index) => {
+            const stepNumber = index + 1;
+            if (stepNumber === this.currentStep) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
             }
         });
     }
