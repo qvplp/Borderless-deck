@@ -6,7 +6,7 @@
     <title>Borderless - Welcome to the Borderless World</title>
     <meta name="description" content="Borderless - 境界なき世界へようこそ。人類の歴史は、常に境界を越える挑戦の歴史でした。">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="game-styles.css">
+    <link rel="stylesheet" href="vertical-scroll.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -45,77 +45,106 @@
         </div>
     </nav>
 
-    <!-- Game Container -->
-    <div class="game-container">
+    <!-- Vertical Scroll Container -->
+    <div class="vertical-scroll-container">
         <!-- Step 1: Welcome -->
-        <section class="game-step active" data-step="1">
-            <div class="step-content">
-                <div class="step-visual">
-                    <div class="ethereum-logo-glow">
-                        <div class="logo-particles"></div>
+        <section class="scroll-section active" data-step="1">
+            <div class="section-content">
+                <div class="text-flow">
+                    <h1 class="main-title">Welcome to the Borderless World</h1>
+                    <h2 class="main-subtitle">境界なき世界へようこそ</h2>
+                    <div class="text-block">
+                        <p class="flowing-text">
+                            人類の歴史は、常に境界を越える挑戦の歴史でした。村から国へ、国から大陸へ。そして今、私たちはデジタル技術によって、ついに地球規模での真の協働を実現する時代を迎えています。
+                        </p>
+                        <p class="flowing-text highlight">
+                            Borderlessは、その新しい時代への一つの扉です。
+                        </p>
                     </div>
                 </div>
-                <div class="step-text">
-                    <h1 class="step-title">Welcome to the Borderless World</h1>
-                    <h2 class="step-subtitle">境界なき世界へようこそ</h2>
-                    <p class="step-description">
-                        人類の歴史は、常に境界を越える挑戦の歴史でした。村から国へ、国から大陸へ。そして今、私たちはデジタル技術によって、ついに地球規模での真の協働を実現する時代を迎えています。
-                    </p>
-                    <p class="step-description">
-                        Borderlessは、その新しい時代への一つの扉です。
-                    </p>
-                    <button class="game-button next-button" data-next="2">
-                        <span>Click to explore</span>
-                        <div class="button-icon">→</div>
-                    </button>
+                <div class="visual-element">
+                    <div class="floating-logo">
+                        <div class="logo-glow"></div>
+                        <div class="particles"></div>
+                    </div>
                 </div>
+            </div>
+            <div class="scroll-hint">
+                <div class="scroll-arrow">↓</div>
+                <span>Scroll down to continue</span>
             </div>
         </section>
 
         <!-- Step 2: Infinite Garden -->
-        <section class="game-step" data-step="2">
-            <div class="step-content">
-                <div class="step-visual">
-                    <div class="garden-scene">
-                        <div class="garden-tree"></div>
-                        <div class="garden-butterfly butterfly-1"></div>
-                        <div class="garden-butterfly butterfly-2"></div>
-                        <div class="garden-particles"></div>
+        <section class="scroll-section" data-step="2">
+            <div class="section-content">
+                <div class="text-flow">
+                    <h1 class="main-title">The Infinite Garden</h1>
+                    <div class="text-block">
+                        <p class="flowing-text">
+                            A metaphor for the decentralized ecosystem where ideas, innovations, 
+                            and communities grow organically without central control.
+                        </p>
                     </div>
-                </div>
-                <div class="step-text">
-                    <h1 class="step-title">The Infinite Garden</h1>
-                    <p class="step-description">
-                        A metaphor for the decentralized ecosystem where ideas, innovations, 
-                        and communities grow organically without central control.
-                    </p>
-                    <div class="garden-features">
-                        <div class="feature-item">
+                    <div class="feature-grid">
+                        <div class="feature-card">
                             <div class="feature-icon">🌱</div>
-                            <span>Decentralized Growth</span>
+                            <h3>Decentralized Growth</h3>
+                            <p>Ideas flourish without central authority</p>
                         </div>
-                        <div class="feature-item">
+                        <div class="feature-card">
                             <div class="feature-icon">🕸️</div>
-                            <span>Interconnected Networks</span>
+                            <h3>Interconnected Networks</h3>
+                            <p>Every node connects to others</p>
                         </div>
-                        <div class="feature-item">
+                        <div class="feature-card">
                             <div class="feature-icon">🔒</div>
-                            <span>Trust & Transparency</span>
+                            <h3>Trust & Transparency</h3>
+                            <p>Built on cryptographic principles</p>
                         </div>
                     </div>
-                    <button class="game-button next-button" data-next="3">
-                        <span>Continue exploring</span>
-                        <div class="button-icon">→</div>
-                    </button>
                 </div>
+                <div class="visual-element">
+                    <div class="garden-visual">
+                        <div class="tree-animation"></div>
+                        <div class="butterfly butterfly-1"></div>
+                        <div class="butterfly butterfly-2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-hint">
+                <div class="scroll-arrow">↓</div>
+                <span>Keep scrolling</span>
             </div>
         </section>
 
         <!-- Step 3: What is Ethereum -->
-        <section class="game-step" data-step="3">
-            <div class="step-content">
-                <div class="step-visual">
-                    <div class="blockchain-animation">
+        <section class="scroll-section" data-step="3">
+            <div class="section-content">
+                <div class="text-flow">
+                    <h1 class="main-title">What is Ethereum?</h1>
+                    <div class="text-block">
+                        <p class="flowing-text">
+                            Ethereum is a decentralized platform that enables smart contracts and 
+                            decentralized applications (DApps) to be built and deployed without any 
+                            downtime, fraud, control, or interference from a third party.
+                        </p>
+                    </div>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">⚡</div>
+                            <h3>Smart Contracts</h3>
+                            <p>Self-executing contracts with terms directly written into code</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🌐</div>
+                            <h3>Decentralized Apps</h3>
+                            <p>Applications that run on a peer-to-peer network of computers</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="visual-element">
+                    <div class="blockchain-visual">
                         <div class="block-chain">
                             <div class="block"></div>
                             <div class="block"></div>
@@ -125,30 +154,10 @@
                         <div class="connection-lines"></div>
                     </div>
                 </div>
-                <div class="step-text">
-                    <h1 class="step-title">What is Ethereum?</h1>
-                    <p class="step-description">
-                        Ethereum is a decentralized platform that enables smart contracts and 
-                        decentralized applications (DApps) to be built and deployed without any 
-                        downtime, fraud, control, or interference from a third party.
-                    </p>
-                    <div class="ethereum-features">
-                        <div class="feature-card">
-                            <div class="card-icon">⚡</div>
-                            <h3>Smart Contracts</h3>
-                            <p>Self-executing contracts with terms directly written into code</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="card-icon">🌐</div>
-                            <h3>Decentralized Apps</h3>
-                            <p>Applications that run on a peer-to-peer network of computers</p>
-                        </div>
-                    </div>
-                    <button class="game-button next-button" data-next="4">
-                        <span>Learn more</span>
-                        <div class="button-icon">→</div>
-                    </button>
-                </div>
+            </div>
+            <div class="scroll-hint">
+                <div class="scroll-arrow">↓</div>
+                <span>Continue scrolling</span>
             </div>
         </section>
 
@@ -327,7 +336,7 @@
     </footer>
 
     <script src="script.js"></script>
-    <script src="game-script.js"></script>
+    <script src="vertical-scroll.js"></script>
 </body>
 </html>
 
