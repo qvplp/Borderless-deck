@@ -251,6 +251,103 @@
     line-height: 1.5;
 }
 
+/* EF Mission */
+.ef-mission {
+    background: rgba(98, 98, 255, 0.05);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(98, 98, 255, 0.1);
+    margin-top: 2rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: cardFlowIn 0.8s ease 1.4s forwards;
+}
+
+.ef-mission h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.ef-mission p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Story Highlights */
+.story-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.highlight {
+    background: rgba(98, 98, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 16px;
+    border: 1px solid rgba(98, 98, 255, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: cardFlowIn 0.8s ease forwards;
+}
+
+.highlight:nth-child(1) { animation-delay: 0.8s; }
+.highlight:nth-child(2) { animation-delay: 1s; }
+.highlight:nth-child(3) { animation-delay: 1.2s; }
+
+.highlight:hover {
+    background: rgba(98, 98, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+.highlight h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #6262ff;
+    margin-bottom: 0.75rem;
+}
+
+.highlight p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Philosophy Content */
+.philosophy-content {
+    background: rgba(98, 98, 255, 0.05);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(98, 98, 255, 0.1);
+    margin-top: 2rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: cardFlowIn 0.8s ease 1.4s forwards;
+}
+
+.philosophy-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.philosophy-content p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.philosophy-content p:last-child {
+    margin-bottom: 0;
+}
+
 /* Scroll Hints */
 .scroll-hint {
     position: absolute;
@@ -397,6 +494,11 @@
     }
     
     .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .story-highlights {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
