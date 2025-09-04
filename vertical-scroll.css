@@ -14,16 +14,17 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    padding: 4rem 2rem;
+    padding: 2rem;
     opacity: 0;
     transform: translateY(100px);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     background: var(--primary-bg);
+    overflow-y: auto;
 }
 
 .scroll-section.active {
@@ -39,14 +40,14 @@
 .page-container {
     max-width: 1200px;
     width: 100%;
-    height: 100%;
+    min-height: calc(100vh - 8rem);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     text-align: center;
     padding: 2rem;
-    overflow-y: auto;
+    margin-bottom: 6rem;
     scrollbar-width: thin;
     scrollbar-color: rgba(98, 98, 255, 0.3) transparent;
 }
@@ -82,7 +83,8 @@
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
 }
 
 /* Academic Text */
@@ -91,6 +93,15 @@
     width: 100%;
     text-align: left;
     line-height: 1.8;
+    margin-bottom: 3rem;
+}
+
+.academic-text p {
+    margin-bottom: 1.5rem;
+}
+
+.academic-text p:last-child {
+    margin-bottom: 0;
 }
 
 /* Section Content (Legacy) */
@@ -911,14 +922,20 @@
 
 /* Navigation Buttons */
 .navigation-button {
-    position: absolute;
-    bottom: 3rem;
+    position: sticky;
+    bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+    z-index: 100;
+    margin-top: 2rem;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    border-radius: 16px;
 }
 
 .next-page-button {
@@ -1115,11 +1132,22 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .section-content {
-        padding: 0 1.5rem;
-        gap: 2rem;
-        text-align: center;
+    .scroll-section {
+        padding: 1rem;
+    }
+    
+    .page-container {
+        padding: 1rem;
+        margin-bottom: 8rem;
+    }
+    
+    .page-content {
+        margin-bottom: 6rem;
+    }
+    
+    .academic-text {
         max-width: 100%;
+        text-align: center;
     }
     
     .main-title {
@@ -1140,6 +1168,11 @@
     
     .visual-element {
         margin-top: 1.5rem;
+    }
+    
+    .navigation-button {
+        bottom: 1rem;
+        padding: 0.5rem 0;
     }
     
     .feature-grid {
@@ -1165,8 +1198,17 @@
 }
 
 @media (max-width: 480px) {
-    .section-content {
-        padding: 0 1rem;
+    .scroll-section {
+        padding: 0.5rem;
+    }
+    
+    .page-container {
+        padding: 0.5rem;
+        margin-bottom: 10rem;
+    }
+    
+    .page-content {
+        margin-bottom: 8rem;
     }
     
     .main-title {
@@ -1183,12 +1225,17 @@
     }
     
     .navigation-button {
-        bottom: 2rem;
+        bottom: 0.5rem;
+        padding: 0.5rem 0;
     }
     
     .next-page-button {
         min-width: 160px;
         padding: 1rem 1.5rem;
+    }
+    
+    .academic-text {
+        margin-bottom: 2rem;
     }
     
     .feature-card {
