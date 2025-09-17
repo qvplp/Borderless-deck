@@ -18,5 +18,10 @@
   "license": "MIT",
   "engines": {
     "node": ">=14.0.0"
+  },
+  "vercel": {
+    "buildCommand": "echo 'Static site - no build required'",
+    "outputDirectory": "deck",
+    "installCommand": "echo 'No dependencies to install'"
   }
 }
