@@ -2,25 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "deck/index.html",
+      "src": "deck/**",
       "use": "@vercel/static"
     }
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/deck/$1"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/assets/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
+      "src": "/(.*)",
+      "dest": "/deck/$1"
     }
   ]
 }
