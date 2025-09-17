@@ -1,0 +1,22 @@
+{
+  "name": "borderless-presentation",
+  "version": "1.0.0",
+  "description": "Borderless - Welcome to the Borderless World",
+  "main": "deck/index.html",
+  "scripts": {
+    "dev": "cd deck && python3 -m http.server 8000",
+    "build": "echo 'Static site - no build required'",
+    "start": "echo 'Static site - no start required'"
+  },
+  "keywords": [
+    "borderless",
+    "presentation",
+    "global",
+    "world-citizen"
+  ],
+  "author": "Borderless Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
